@@ -1,9 +1,10 @@
-<h1>New flat</h1>
+<%# navbar %>
+<%= render "navbar" %>
 
-<%= render "form", flat: @flat %>
-
-<br>
-
-<div>
-  <%= link_to "Back to flats", flats_path %>
+<%# form %>
+<div class="row d-flex justify-content-center">
+  <div class="col-4 bg-secondary rounded py-5" style="--bs-bg-opacity: .1;">
+    <h1>Add a new flat</h1>
+    <%= render "form", flat: @flat %>
+  </div>
 </div>

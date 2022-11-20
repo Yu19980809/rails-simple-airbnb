@@ -1,14 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<%# navbar %>
+<%= render "navbar" %>
 
-<h1>Flats</h1>
-
-<div id="flats">
-  <% @flats.each do |flat| %>
-    <%= render flat %>
-    <p>
-      <%= link_to "Show this flat", flat %>
-    </p>
-  <% end %>
+<%# content %>
+<div class="container">
+  <h1>All our flats</h1>
+  <p>All <%= @flats.length %> flats</p>
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-md-4">
+        <div class="card mt-3" style="width: 18rem;">
+          <img src="" class="card-img-top">
+          <div class="card-body">
+            <div class="bg-secondary" style="--bs-bg-opacity: .3;">
+              <h5 class="card-title"><%= flat.name %></h5>
+              <p><%= flat.address %></p>
+            </div>
+            <%= link_to "More info", flat_path(flat.id), class: "text-primary" %>
+            <%= link_to "Edit", edit_flat_path(flat.id), class: "text-warning" %>
+            <%= link_to "Remove", destroy_flat_path(flat.id), class: "text-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New flat", new_flat_path %>
