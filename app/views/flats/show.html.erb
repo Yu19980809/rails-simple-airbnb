@@ -1,10 +1,7 @@
-<%# navbar %>
-<%= render "navbar" %>
-
-<%# map %>
+<%# picture %>
 <div class="map" style="background-image: url('<%= @flat.picture_url %>')"></div>
 
-<%# content%>
+<%# content %>
 <div class="container my-5">
   <div class="row">
     <%# left part %>
@@ -14,13 +11,6 @@
         <div class="card-body">
           <h3><%= @flat.name %></h3>
           <p><%= @flat.address %></p>
-        </div>
-      </div>
-      <%# description %>
-      <div class="card my-3">
-        <div class="card-body">
-          <h3>A bit more about this flat...</h3>
-          <p><%= @flat.description %></p>
         </div>
       </div>
       <%# detail %>
@@ -35,6 +25,15 @@
             <i class="fa-solid fa-euro-sign"></i>
             <span><%= @flat.price_per_night * @flat.number_of_guests %></span>
           </p>
+        </div>
+      </div>
+      <%# description %>
+      <div class="card my-3">
+        <div class="card-body">
+          <h3>A bit more about this flat...</h3>
+          <p><%= @flat.description %></p>
+          <%# map %>
+          <div class="map" style="background-image: url('<%= @image_url %>')"></div>
         </div>
       </div>
     </div>

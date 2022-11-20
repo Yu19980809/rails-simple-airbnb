@@ -1,17 +1,29 @@
-<%# navbar %>
-<%= render "navbar" %>
-
-<%# content %>
 <div class="container py-3">
+  <%# header %>
   <h1>All our flats</h1>
-  <p>All <%= @flats.length %> flats</p>
+
+  <%# paragraph %>
+  <% if @query %>
+    <p>
+      You searched for <strong><%= @query %></strong>. We found <%= @flats.length %> flat(s) out of our <%= Flat.count %> on our website.
+    </p>
+  <% else %>
+    <p>All <%= @flats.length %> flats</p>
+  <% end %>
+
+  <%# cards %>
   <div class="row">
     <% @flats.each do |flat| %>
-      <div class="col-md-4">
-        <div class="card mt-3" style="width: 18rem;">
+      <%# card %>
+      <div class="col-4">
+        <div class="card mt-3 w-100" style="width: 18rem;">
+          <%# image %>
           <img src="<%= flat.picture_url %>" class="card-img-top">
+
+          <%# card-body %>
           <div class="card-body p-0">
-            <div class="bg-secondary p-2" style="--bs-bg-opacity: .1;">
+            <%# info %>
+            <div class="bg-secondary py-2 px-3" style="--bs-bg-opacity: .1;">
               <h5 class="card-title"><%= flat.name %></h5>
               <p><%= flat.address %></p>
               <p>
@@ -23,6 +35,7 @@
                 <span><%= flat.price_per_night * flat.number_of_guests %></span>
               </p>
             </div>
+            <%# options %>
             <div class="p-2">
               <%= link_to "More info", flat_path(flat.id), class: "text-primary" %>
               <%= link_to "Edit", edit_flat_path(flat.id), class: "text-warning px-2" %>

@@ -3,11 +3,23 @@ class FlatsController < ApplicationController
 
   # GET /flats or /flats.json
   def index
-    @flats = Flat.all
+    if params[:query].present?
+      @query = params[:query]
+      @flats = Flat.where("name LIKE '%#{params[:query]}%'")
+    else
+      @flats = Flat.all
+    end
   end
 
   # GET /flats/1 or /flats/1.json
-  def show; end
+  def show
+    token = 'pk.eyJ1IjoibGlicmEwODA5IiwiYSI6ImNsYXA0Z2NtZDB5NHUzcW4wdzhzbHNpcWUifQ.FIdlGM0w7swLkths6Gx2og'
+    location = @flat.address.gsub(' ', '%20')
+    coordinates_url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{location}.json?access_token=#{token}"
+    data = JSON.parse(URI.open(coordinates_url).read)
+    center = data['features'][0]['center']
+    @image_url = "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B#{center[0]}%2C#{center[1]}%5D%7D)/#{center[0]},#{center[1]},12/500x300?access_token=#{token}"
+  end
 
   # GET /flats/new
   def new

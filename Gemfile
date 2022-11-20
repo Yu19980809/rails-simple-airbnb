@@ -3,8 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+# open-uri
+gem "open-uri"
+
 # faker
-gem 'faker'
+gem "faker"
 
 # simple_form
 gem "simple_form", github: "heartcombo/simple_form"
