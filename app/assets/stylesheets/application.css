@@ -22,3 +22,7 @@ a {
   background-position: center;
   background-size: cover;
 }
+
+.card {
+  box-shadow: 8px 10px 15px rgba(0, 0, 0, .3)
+}
