@@ -13,10 +13,12 @@
  *= require_tree .
  *= require_self
  */
+a {
+  text-decoration: none;
+}
 
- .text-omit {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: 3;
- }
+.map {
+  height: 350px;
+  background-position: center;
+  background-size: cover;
+}

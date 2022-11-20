@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :flats, except: [:destroy]
-  delete 'flats/:id', to: 'flats#destroy', as: :destroy_flat
+
+  root 'flats#index'
+  resources :flats
 end

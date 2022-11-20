@@ -19,6 +19,7 @@ puts 'Adding new flats...'
   flat.description = Faker::Restaurant.description
   flat.price_per_night = Faker::Number.decimal(l_digits: 2)
   flat.number_of_guests = Faker::Number.non_zero_digit
+  flat.picture_url = 'https://plus.unsplash.com/premium_photo-1661963546658-3bb26361ca54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1924&q=80'
   flat.save
 
   puts "Added #{flat.id} - #{flat.name}"

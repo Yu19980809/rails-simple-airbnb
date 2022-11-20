@@ -2,22 +2,34 @@
 <%= render "navbar" %>
 
 <%# content %>
-<div class="container">
+<div class="container py-3">
   <h1>All our flats</h1>
   <p>All <%= @flats.length %> flats</p>
   <div class="row">
     <% @flats.each do |flat| %>
       <div class="col-md-4">
         <div class="card mt-3" style="width: 18rem;">
-          <img src="" class="card-img-top">
-          <div class="card-body">
-            <div class="bg-secondary" style="--bs-bg-opacity: .3;">
+          <img src="<%= flat.picture_url %>" class="card-img-top">
+          <div class="card-body p-0">
+            <div class="bg-secondary p-2" style="--bs-bg-opacity: .1;">
               <h5 class="card-title"><%= flat.name %></h5>
               <p><%= flat.address %></p>
+              <p>
+                <i class="fa-solid fa-people-group"></i>
+                &nbsp;
+                <span><%= flat.number_of_guests %></span>
+                &nbsp;&nbsp;
+                <i class="fa-solid fa-euro-sign"></i>
+                <span><%= flat.price_per_night * flat.number_of_guests %></span>
+              </p>
             </div>
-            <%= link_to "More info", flat_path(flat.id), class: "text-primary" %>
-            <%= link_to "Edit", edit_flat_path(flat.id), class: "text-warning" %>
-            <%= link_to "Remove", destroy_flat_path(flat.id), class: "text-danger" %>
+            <div class="p-2">
+              <%= link_to "More info", flat_path(flat.id), class: "text-primary" %>
+              <%= link_to "Edit", edit_flat_path(flat.id), class: "text-warning px-2" %>
+              <%= link_to "Remove", flat_path(flat.id), class: "text-danger", data: {
+                turbo_method: :delete, turbo_confirm: "Are you sre to remove '#{flat.name}'"
+              } %>
+            </div>
           </div>
         </div>
       </div>

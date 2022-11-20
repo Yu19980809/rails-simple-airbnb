@@ -7,8 +7,7 @@ class FlatsController < ApplicationController
   end
 
   # GET /flats/1 or /flats/1.json
-  def show
-  end
+  def show; end
 
   # GET /flats/new
   def new
@@ -16,8 +15,7 @@ class FlatsController < ApplicationController
   end
 
   # GET /flats/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /flats or /flats.json
   def create
@@ -66,6 +64,6 @@ class FlatsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def flat_params
-    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests)
+    params.require(:flat).permit(:name, :address, :description, :price_per_night, :number_of_guests, :picture_url)
   end
 end

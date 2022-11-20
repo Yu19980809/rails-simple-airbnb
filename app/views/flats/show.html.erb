@@ -1,0 +1,75 @@
+<%# navbar %>
+<%= render "navbar" %>
+
+<%# map %>
+<div class="map" style="background-image: url('<%= @flat.picture_url %>')"></div>
+
+<%# content%>
+<div class="container my-5">
+  <div class="row">
+    <%# left part %>
+    <div class="col-8">
+      <%# name & address %>
+      <div class="card">
+        <div class="card-body">
+          <h3><%= @flat.name %></h3>
+          <p><%= @flat.address %></p>
+        </div>
+      </div>
+      <%# description %>
+      <div class="card my-3">
+        <div class="card-body">
+          <h3>A bit more about this flat...</h3>
+          <p><%= @flat.description %></p>
+        </div>
+      </div>
+      <%# detail %>
+      <div class="card">
+        <div class="card-body">
+          <h3>Detail</h3>
+          <p>
+            <i class="fa-solid fa-people-group"></i>
+            &nbsp;
+            <span><%= @flat.number_of_guests %></span>
+            &nbsp;&nbsp;
+            <i class="fa-solid fa-euro-sign"></i>
+            <span><%= @flat.price_per_night * @flat.number_of_guests %></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%# right-part %>
+    <div class="col-4">
+      <%# form to book %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Book this place!</h5>
+          <form action="#">
+            <div class="input-group">
+              <span class="input-group-text" id="start-date-label">From</span>
+              <input type="text" class="form-control" placeholder="20/11/2022" aria-label="start-date" aria-describedby="start-date-label">
+            </div>
+            <div class="input-group my-2">
+              <span class="input-group-text" id="end-date-label">&nbsp;&nbsp;To&nbsp;&nbsp;</span>
+              <input type="text" class="form-control" placeholder="21/11/2022" aria-label="end-date" aria-describedby="end-date-label">
+            </div>
+            <input type="submit" value="Book" class="btn btn-success w-100">
+          </form>
+        </div>
+      </div>
+      <%# share %>
+      <div class="card">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <span>share</span>
+          <div class="fs-3">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+            <i class="fa-brands fa-square-pinterest"></i>
+            <i class="fa-solid fa-square-envelope"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
